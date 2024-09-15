@@ -1,0 +1,8 @@
+### -> create new angular app
+ng new
+
+### -> install tailwind
+go to tailwind, follow angular instructions
+
+### -> add new component
+ng g c components/todo

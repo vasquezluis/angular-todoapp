@@ -1,0 +1,50 @@
+<section class="todoList-wrapper">
+  <h1 class="title">TODO app</h1>
+
+  <form class="new-todo" (submit)="addTodo($event)">
+    <!-- [formControl] to link to new todo form control -->
+    <input
+      type="text"
+      placeholder="Do my homework..."
+      [formControl]="newTodo"
+    />
+    <button type="submit">+</button>
+  </form>
+
+  <div class="filters">
+    @for(item of Buttons; track item.id){
+    <button
+      (click)="changeFilter(item.value)"
+      [class.active]="filter() === item.value"
+    >
+      {{ item.name }}
+    </button>
+    }
+  </div>
+
+  <ul class="todoList">
+    @for(item of todoListFiltered(); track item.id){ @if(item.editing){
+    <li class="todoEditing">
+      <input
+        type="text"
+        placeholder="Edit task"
+        [value]="item.title"
+        (keydown.enter)="saveTitleTodo(item.id, $event)"
+      />
+    </li>
+    } @else {
+    <li class="todo">
+      <input
+        type="checkbox"
+        [checked]="item.completed"
+        (click)="toggleTodo(item.id)"
+      />
+      <label>{{ item.title }}</label>
+      @if(!item.completed){
+      <button (click)="updateTodoEditMode(item.id)">Edit</button>
+      }
+      <button class="delete" (click)="removeTodo(item.id)">Delete</button>
+    </li>
+    } }
+  </ul>
+</section>

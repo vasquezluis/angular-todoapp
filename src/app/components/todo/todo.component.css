@@ -1,0 +1,63 @@
+.todoList-wrapper {
+  @apply bg-background-200 p-4 min-w-[300px] w-fit mt-8 mx-auto rounded-lg;
+}
+
+.title {
+  @apply text-2xl font-bold text-center mb-4;
+}
+
+.new-todo {
+  @apply relative flex items-center rounded-lg overflow-hidden;
+
+  & input {
+    @apply w-64 p-2 rounded-lg bg-background-300;
+  }
+
+  & button {
+    @apply absolute right-0 bg-background-400 text-lg font-black h-full px-2;
+  }
+}
+
+.filters {
+  @apply flex justify-end gap-2 my-2;
+
+  & button {
+    @apply px-2 rounded-lg bg-background-300;
+  }
+
+  & button.active {
+    @apply bg-purple-500;
+  }
+}
+
+.todoList {
+  @apply flex flex-col gap-2;
+
+  & li {
+    @apply flex bg-background-300 px-4 py-2 rounded-lg items-center gap-2;
+  }
+
+  & li.todo label {
+    @apply flex-1;
+  }
+
+  & li.todo:hover button {
+    @apply block;
+  }
+
+  & li.todo button {
+    @apply hidden text-xs;
+  }
+
+  & li.todo input[type="checkbox"] {
+    @apply size-4 cursor-pointer;
+  }
+
+  & li.todoEditing input[type="text"] {
+    @apply w-full bg-background-400 rounded-lg px-2 py-1 outline-none;
+  }
+
+  & button.delete {
+    @apply bg-red-500 hover:bg-red-600 py-1 px-2 rounded-lg;
+  }
+}
